@@ -1,15 +1,34 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Root from './pages/Root'
+import RootPage from './pages/Root'
+import ShopPage from './pages/Shop';
+import ProductsPage from './pages/Products';
+import CartPage from './pages/Cart';
+import OrdersPage from './pages/Orders';
+import AddProductPage from './pages/AddProduct';
+import AdminProductsPage from './pages/AdminProductsPage';
 
-const router = createBrowserRouter([{path:"/", element: <Root/>, errorElement: (<p>Something went wrong</p>), children:[]}]);
+const router = createBrowserRouter([
+    {path:"/", 
+        element: <RootPage/>, 
+        errorElement: (<p>Something went wrong</p>), 
+        children:[
+            {index: true, element: <ShopPage/>},
+            {path: "/products", element: <ProductsPage/>},
+            {path: "/cart", element: <CartPage/>},
+            {path: "/orders", element: <OrdersPage/>},
+            {path: "/admin/add-product", element: <AddProductPage/>},
+            {path: "/admin/products", element: <AdminProductsPage/>},
+        ],
+    },
+]);
 
 function App(): JSX.Element {
-  return (
-    <>
-      <RouterProvider router={router}/>
-    </>
-  )
+    return (
+        <>
+            <RouterProvider router={router}/>
+        </>
+    )
 }
 
 export default App

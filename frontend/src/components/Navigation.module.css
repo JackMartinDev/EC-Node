@@ -1,0 +1,28 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  max-width: 100%;
+  margin: auto;
+  padding:  1.5rem 4rem;
+  display: flex;
+  justify-content: right;
+  border-bottom: 1px black solid;
+}
+
+.list {
+  display: flex;
+  gap: 2rem;
+}
+
+.list a {
+  text-decoration: none;
+}
+
+.list a:hover,
+.list a.active {
+  background-color: white;
+}
