@@ -1,23 +1,28 @@
-import express from "express"
+import adminRoutes from './routes/admin.js'
+import shopRoutes from './routes/shop.js'
 
-import bodyParser from "body-parser"
+import express from "express"
+import cors from "cors"
 
 import errorController from './controllers/error.js'
 
 const app = express();
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.use(cors());
+app.use(express.json());
 
-import adminRoutes from './routes/admin.js'
-import shopRoutes from './routes/shop.js'
+//End point logging
+app.use((req,res,next)=>{
+    console.log(req.path, req.method);
+    next();
+})
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('/Users/jackmartin/NodeJs/00-starting-setup/public'));
-
+//routes
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController);
 
-app.listen(3000);
+app.listen(3000, ()=>{
+    console.log("Listening on port 3000")
+});

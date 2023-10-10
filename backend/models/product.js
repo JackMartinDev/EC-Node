@@ -1,12 +1,7 @@
 import fs from "fs"
-import path from "path"
 
-const p = "/Users/jackmartin/NodeJs/00-starting-setup/data/products.json"
-//path.join(
-  //path.dirname(require.main.filename),
-  //'data',
-  //'products.json'
-//);
+const p = "/home/jack/Projects/EC-Node/backend/data/products.json"
+
 const getProductsFromFile = cb => {
   fs.readFile(p, (err, fileContent) => {
     if (err) {

@@ -2,11 +2,14 @@ import Product from "../models/product.js"
 
 const getProducts = (req, res, next) => {
   Product.fetchAll(products => {
-    res.render('shop/product-list', {
-      prods: products,
-      pageTitle: 'All Products',
-      path: '/products'
-    });
+        //res.render('shop/product-list', {
+      //prods: products,
+      //pageTitle: 'All Products',
+      //path: '/products'
+    //});
+    if(products) {
+        res.status(200).json(products);
+    }else res.status(404);
   });
 };
 
