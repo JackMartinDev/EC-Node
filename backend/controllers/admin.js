@@ -1,20 +1,15 @@
 import Product from "../models/product.js"
 
 const getAddProduct = (req, res, next) => {
-  res.render('admin/add-product', {
-    pageTitle: 'Add Product',
-    path: '/admin/add-product',
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
-  });
+    console.log("here")
 };
+
 
 const postAddProduct = (req, res, next) => {
   const {title, imageUrl, price, description} = req.body;
   const product = new Product(title, imageUrl, description, price);
   product.save();
-  res.redirect('/');
+  res.status(200).json({message: "Product succesfully added"});
 };
 
 const getProducts = (req, res, next) => {

@@ -21,8 +21,6 @@ app.use((req,res,next)=>{
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use(errorController);
-
 app.listen(3000, ()=>{
     console.log("Listening on port 3000")
 });
