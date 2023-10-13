@@ -6,10 +6,10 @@ const getAddProduct = (req, res, next) => {
 
 
 const postAddProduct = (req, res, next) => {
-  const {title, imageUrl, price, description} = req.body;
-  const product = new Product(title, imageUrl, description, price);
-  product.save();
-  res.status(200).json({message: "Product succesfully added"});
+    const {title, imageUrl, price, description} = req.body;
+    const product = new Product(title, imageUrl, description, price);
+    product.save();
+    res.status(200).json({message: "Product succesfully added", product: product});
 };
 
 const getProducts = (req, res, next) => {

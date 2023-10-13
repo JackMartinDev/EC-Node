@@ -1,5 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import T_Product from "../types/product";
+import { useNavigate } from "react-router-dom";
 
 const AddProductPage = ():JSX.Element =>{
     const nameRef = useRef<HTMLInputElement|null>(null) 
@@ -7,17 +8,22 @@ const AddProductPage = ():JSX.Element =>{
     const descRef = useRef<HTMLInputElement|null>(null) 
     const priceRef = useRef<HTMLInputElement|null>(null) 
 
+    const navigate = useNavigate();
+    const [isPending, setIsPending] = useState(false)
+
     const PostProduct = async (newProduct:T_Product) =>{
-        let data = JSON.stringify(newProduct)
+        setIsPending(true)
         try {
             const response = await fetch("http://localhost:3000/admin/add-product", {
                 method: "POST",
                 headers: {"Content-Type": "application/json",},
-                body: data
+                body: JSON.stringify(newProduct) 
             });
-            return response.json()
+            console.log(await response.json())
         } catch (error) {
             console.log(error)
+        }finally {
+            setIsPending(false)
         }
     }
 
@@ -37,10 +43,13 @@ const AddProductPage = ():JSX.Element =>{
         urlRef.current!.value = "";
         descRef.current!.value = "";
         priceRef.current!.value = "";
+
+        navigate("/products") 
     }
 
     return (<>
         <div>Add products page</div>
+        {isPending && <p>Pending...</p>}
         <form autoComplete="off" onSubmit={onSubmitHandler}>
             <div>
                 <label htmlFor="title">Name</label>
