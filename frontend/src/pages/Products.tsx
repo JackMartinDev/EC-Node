@@ -27,7 +27,7 @@ const ProductsPage = ():JSX.Element =>{
     }, [])
     return( <ul>
         {error && <p>Error!</p>}
-        {products.map((product) => <li key={product.id}><Product data={product}/></li>)}
+        {products ? products.map((product) => <li key={product.id}><Product data={product}/></li>) : <p>No products found</p>}
     </ul>
     )
 }
