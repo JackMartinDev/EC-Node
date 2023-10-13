@@ -27,7 +27,7 @@ const ProductsPage = ():JSX.Element =>{
     }, [])
     return( <ul>
         {error && <p>Error!</p>}
-        {products.map((product) => <li><Product data={product}/></li>)}
+        {products.map((product) => <li key={product.id}><Product data={product}/></li>)}
     </ul>
     )
 }
