@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import T_Product from "../types/product";
 import Product from "../components/Product";
+import ProductsList from "../components/ProductsList";
 const ProductsPage = ():JSX.Element =>{
     const [products, setProducts] = useState<T_Product[]>([]);
     const [error, setError] = useState<Boolean>(false)
@@ -27,7 +28,7 @@ const ProductsPage = ():JSX.Element =>{
     }, [])
     return( <ul>
         {error && <p>Error!</p>}
-        {products ? products.map((product) => <li key={product.id}><Product data={product}/></li>) : <p>No products found</p>}
+        <ProductsList products={products}/>
     </ul>
     )
 }
