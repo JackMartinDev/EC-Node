@@ -48,7 +48,7 @@ const ProductForm = ():JSX.Element =>{
     return <>
         {isPending && <p>Pending...</p>}
         <Box maw={340} mx="auto">
-            <form autoComplete="off" onSubmit={onSubmitHandler}>
+           <form autoComplete="off" onSubmit={onSubmitHandler}>
                 <TextInput ref={nameRef} label="Name" />
                 <TextInput ref={urlRef} label="Image url" />
                 <TextInput ref={descRef} label="Description" />
