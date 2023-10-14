@@ -1,19 +1,20 @@
 import Product from "../models/product.js"
 
-const getProducts = (req, res, next) => {
+const getProducts = (_, res ) => {
   Product.fetchAll(products => {
-        //res.render('shop/product-list', {
-      //prods: products,
-      //pageTitle: 'All Products',
-      //path: '/products'
-    //});
     if(products) {
         res.status(200).json(products);
     }else res.status(404);
   });
 };
 
-const getIndex = (req, res, next) => {
+const getProduct = (req, res) =>{
+  const productId = req.params.productId;
+  Product.fetchById(productId, product => {
+    console.log(product)
+  })
+}
+const getIndex = (_, res) => {
   Product.fetchAll(products => {
     res.render('shop/index', {
       prods: products,
@@ -23,25 +24,25 @@ const getIndex = (req, res, next) => {
   });
 };
 
-const getCart = (req, res, next) => {
+const getCart = (_, res) => {
   res.render('shop/cart', {
     path: '/cart',
     pageTitle: 'Your Cart'
   });
 };
 
-const getOrders = (req, res, next) => {
+const getOrders = (_, res) => {
   res.render('shop/orders', {
     path: '/orders',
     pageTitle: 'Your Orders'
   });
 };
 
-const getCheckout = (req, res, next) => {
+const getCheckout = (_, res) => {
   res.render('shop/checkout', {
     path: '/checkout',
     pageTitle: 'Checkout'
   });
 };
 
-export default {getProducts, getIndex, getCart, getOrders, getCheckout}
+export default {getProducts, getProduct, getIndex, getCart, getOrders, getCheckout}
