@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import T_Product from "../types/product";
-import Product from "../components/Product";
 import ProductsList from "../components/ProductsList";
+import { Title, rem } from "@mantine/core";
 const ProductsPage = ():JSX.Element =>{
     const [products, setProducts] = useState<T_Product[]>([]);
     const [error, setError] = useState<Boolean>(false)
@@ -27,6 +27,7 @@ const ProductsPage = ():JSX.Element =>{
         getProducts()
     }, [])
     return( <ul>
+        <Title mb={rem(32)}>Products List</Title>
         {error && <p>Error!</p>}
         <ProductsList products={products}/>
     </ul>

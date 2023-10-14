@@ -10,7 +10,7 @@ const placeholderImg = "https://images.unsplash.com/photo-1527004013197-933c4bb6
 
 const Product = ({data}:T_Props):JSX.Element => {
     return(
-        <Box maw={340} mx="auto">
+        <Box maw={340} miw={340} mx="auto">
             <Card shadow="sm" withBorder padding="lg" radius="md">
                 <Card.Section>
                     <Image 

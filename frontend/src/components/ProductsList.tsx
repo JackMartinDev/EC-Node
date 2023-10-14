@@ -6,15 +6,13 @@ interface Props {
 }
 
 const ProductsList = (props: Props): JSX.Element =>{
-    return <SimpleGrid cols={3}>
-        {props.products ? 
-        props.products.map((product) => 
-                <li key={product.id}>
-                    <Product data={product}/>
-                </li>) 
-        : 
-            <p>No products found</p>}
-    </SimpleGrid>
+    return( 
+        <SimpleGrid  cols={3}>
+            {props.products.map((product) => 
+                <Product data={product}/>
+            )} 
+        </SimpleGrid>
+    )
 }
 
 export default ProductsList
