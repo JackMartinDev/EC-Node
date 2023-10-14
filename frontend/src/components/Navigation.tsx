@@ -12,7 +12,7 @@ const Navigation = () =>{
     ]
 
     const items = links.map((link) => (
-        <NavLink to={link.link} className={classes.link}>{link.label}</NavLink>
+        <NavLink to={link.link} className={classes.link} style={({isActive}) => ({backgroundColor: isActive ? "lightgrey" : ""})}>{link.label}</NavLink>
     ))
 
     return(
