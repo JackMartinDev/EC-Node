@@ -17,7 +17,8 @@ const router = createBrowserRouter([
         errorElement: (<p>Something went wrong</p>), 
         children:[
             {index: true, element: <ShopPage/>},
-            {path: "/products", element: <ProductsPage/>, loader: productsLoader},
+            {path: "/products", element: <ProductsPage/>, 
+             errorElement: <p>Could not fetch products</p>, loader: productsLoader},
             {path: "/products/:productId", element: <ProductDetailsPage/>},
             {path: "/cart", element: <CartPage/>},
             {path: "/orders", element: <OrdersPage/>},
