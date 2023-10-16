@@ -8,6 +8,7 @@ import OrdersPage from './pages/Orders';
 import AddProductPage from './pages/AddProduct';
 import AdminProductsPage from './pages/AdminProductsPage';
 import ProductDetailsPage from './pages/ProductDetails';
+
 import {loader as productsLoader} from "./components/ProductsList"
 
 const router = createBrowserRouter([
