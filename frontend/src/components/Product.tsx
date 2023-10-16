@@ -1,7 +1,7 @@
 import T_Product from "../types/product"
 import { Box, Card, Image, Badge, Text, Group, Button} from "@mantine/core"
 import { IconShoppingCart } from "@tabler/icons-react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 interface T_Props {
     data: T_Product
@@ -28,11 +28,11 @@ const Product = ({data}:T_Props):JSX.Element => {
                     {data.description}
                 </Text>
                 <Group justify="flex-end" mt="md">
-                    <NavLink to={`../products/${data.id}`}>
+                    <Link to={`/products/${data.id}`}>
                         <Button variant="light">
                             Details
                         </Button>
-                    </NavLink>
+                    </Link>
                     <Button leftSection={<IconShoppingCart size={14}/>} variant="light">
                         Add to cart
                     </Button>
