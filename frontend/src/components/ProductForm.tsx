@@ -21,6 +21,7 @@ const ProductForm = ():JSX.Element =>{
                 body: JSON.stringify(newProduct) 
             });
             console.log(await response.json())
+            navigate("/products") 
         } catch (error) {
             console.log(error)
         }finally {
@@ -43,7 +44,6 @@ const ProductForm = ():JSX.Element =>{
         priceRef.current!.value = "";
 
         PostProduct(newProduct)
-        navigate("../products") 
     }
     return <>
         {isPending && <p>Pending...</p>}

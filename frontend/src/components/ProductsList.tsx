@@ -1,18 +1,29 @@
 import T_Product from "../types/product"
 import Product from "./Product"
 import { SimpleGrid } from "@mantine/core"
-interface Props {
-    products: T_Product[]
-}
+import { useLoaderData } from "react-router-dom";
 
-const ProductsList = (props: Props): JSX.Element =>{
+const ProductsList = (): JSX.Element =>{
+    const products = useLoaderData() as T_Product[];
+
     return( 
         <SimpleGrid  cols={3}>
-            {props.products.map((product) => 
-                <Product data={product}/>
+            {products.map((product) => 
+                <Product key={product.id} data={product}/>
             )} 
         </SimpleGrid>
     )
 }
 
 export default ProductsList
+
+export async function loader (): Promise<any> {
+    const response = await fetch("http://localhost:3000/products");
+
+    if(!response.ok){
+        // ...
+    }else{
+        return await response.json()
+    }
+}
+
