@@ -1,7 +1,7 @@
 import fs from "fs"
 
-//const p = "/home/jack/Projects/EC-Node/backend/data/products.json"
-const p = "/Users/jackmartin/Programming/EC-Node/backend/data/products.json"
+const p = "/home/jack/Projects/EC-Node/backend/data/products.json"
+//const p = "/Users/jackmartin/Programming/EC-Node/backend/data/products.json"
 
 const getProductsFromFile = cb => {
   fs.readFile(p, (err, fileContent) => {

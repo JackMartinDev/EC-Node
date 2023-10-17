@@ -1,11 +1,6 @@
 import Product from "../models/product.js"
 
-const getAddProduct = (req, res, next) => {
-    console.log("here")
-};
-
-
-const postAddProduct = (req, res, next) => {
+const postAddProduct = (req, res) => {
     const {title, imageUrl, price, description} = req.body;
     const product = new Product(title, imageUrl, description, price);
     product.save();
@@ -22,4 +17,4 @@ const getProducts = (req, res, next) => {
   });
 };
 
-export default {getAddProduct, postAddProduct, getProducts}
+export default {postAddProduct, getProducts}

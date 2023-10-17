@@ -12,6 +12,11 @@ const getProduct = (req, res) =>{
   const productId = req.params.productId;
   Product.fetchById(productId, product => {
     console.log(product)
+        if(product){
+        res.status(200).json(product)
+        } else {
+            res.status(404);
+        }
   })
 }
 const getIndex = (_, res) => {
@@ -31,6 +36,10 @@ const getCart = (_, res) => {
   });
 };
 
+const postCart = (req, res) => {
+
+}
+
 const getOrders = (_, res) => {
   res.render('shop/orders', {
     path: '/orders',
@@ -45,4 +54,4 @@ const getCheckout = (_, res) => {
   });
 };
 
-export default {getProducts, getProduct, getIndex, getCart, getOrders, getCheckout}
+export default {getProducts, getProduct, getIndex, getCart, postCart, getOrders, getCheckout}
