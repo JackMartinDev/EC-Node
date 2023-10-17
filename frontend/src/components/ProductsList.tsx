@@ -20,7 +20,7 @@ export default ProductsList
 export async function loader (): Promise<any> {
     const response = await fetch("http://localhost:3000/products");
     if(!response.ok){
-        throw new Error("Something went wrong");
+        throw new Response(JSON.stringify({message: "Could not fetch products"}), {status: 500});
     }else{
         return response;
     }

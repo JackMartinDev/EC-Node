@@ -8,17 +8,17 @@ import OrdersPage from './pages/Orders';
 import AddProductPage from './pages/AddProduct';
 import AdminProductsPage from './pages/AdminProductsPage';
 import ProductDetailsPage from './pages/ProductDetails';
+import ErrorPage from './pages/Error';
 
 import {loader as productsLoader} from "./components/ProductsList"
 
 const router = createBrowserRouter([
     {path:"/", 
         element: <RootPage/>, 
-        errorElement: (<p>Something went wrong</p>), 
+        errorElement: <ErrorPage/>, 
         children:[
             {index: true, element: <ShopPage/>},
-            {path: "/products", element: <ProductsPage/>, 
-             errorElement: <p>Could not fetch products</p>, loader: productsLoader},
+            {path: "/products", element: <ProductsPage/>, loader: productsLoader},
             {path: "/products/:productId", element: <ProductDetailsPage/>},
             {path: "/cart", element: <CartPage/>},
             {path: "/orders", element: <OrdersPage/>},
