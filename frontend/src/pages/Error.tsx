@@ -1,4 +1,4 @@
-import { Text, Title } from "@mantine/core";
+import { Center, Text, Title, Box } from "@mantine/core";
 import { ErrorResponse, useRouteError } from "react-router-dom"
 import Navigation from "../components/Navigation";
 
@@ -22,8 +22,12 @@ const ErrorPage = ():JSX.Element =>{
     return(
         <>
             <Navigation/>
-            <Title>{title}</Title>
-            <Text>{message}</Text>
+            <Center>
+                <Box>
+                    <Title>{title}</Title>
+                    <Text ta="center">{message}</Text>
+                </Box>
+            </Center>
         </>
     )
 }

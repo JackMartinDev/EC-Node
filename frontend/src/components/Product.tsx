@@ -9,7 +9,23 @@ interface T_Props {
 
 const placeholderImg = "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
 
+
 const Product = ({data}:T_Props):JSX.Element => {
+
+    const handleAddToCart = (e:React.MouseEvent<HTMLElement>):void => {
+        e.preventDefault();
+
+        const currentCart = localStorage.getItem("cart");
+        let newCart: string[] = [];
+        if(currentCart){
+            newCart = [...JSON.parse(currentCart)];
+        } 
+
+        newCart.push(data.id);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+    }
+
+    
     return(
         <Box maw={340} miw={340} mx="auto">
             <Card shadow="sm" withBorder padding="lg" radius="md">
@@ -33,7 +49,7 @@ const Product = ({data}:T_Props):JSX.Element => {
                             Details
                         </Button>
                     </Link>
-                    <Button leftSection={<IconShoppingCart size={14}/>} variant="light">
+                    <Button onClick={handleAddToCart} leftSection={<IconShoppingCart size={14}/>} variant="light">
                         Add to cart
                     </Button>
                 </Group>

@@ -11,6 +11,7 @@ import ProductDetailsPage from './pages/ProductDetails';
 import ErrorPage from './pages/Error';
 
 import {loader as productsLoader} from "./components/ProductsList"
+import {loader as productDetailsLoader} from "./pages/ProductDetails"
 
 const router = createBrowserRouter([
     {path:"/", 
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
         children:[
             {index: true, element: <ShopPage/>},
             {path: "/products", element: <ProductsPage/>, loader: productsLoader},
-            {path: "/products/:productId", element: <ProductDetailsPage/>},
+            {path: "/products/:productId", element: <ProductDetailsPage/>, loader: productDetailsLoader},
             {path: "/cart", element: <CartPage/>},
             {path: "/orders", element: <OrdersPage/>},
             {path: "/admin/add-product", element: <AddProductPage/>},
