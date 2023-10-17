@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "../components/Navigation";
-//import { useNavigation } from "react-router-dom";
-
+import { useNavigation } from "react-router-dom";
+import { Loader } from "@mantine/core";
 const RootPage = () =>{
-//    const navigation = useNavigation();
-//            {navigation.state === "loading" && <p>Loading...</p>}
+    const {state} = useNavigation();
+//TODO: Add the loading state to a modal
     return(
         <>
             <Navigation/>
+            {state === "loading" && <Loader color="blue"/>}
             <Outlet/>
         </>)
 }

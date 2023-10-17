@@ -1,17 +1,22 @@
 import T_Product from "../types/product"
 import Product from "./Product"
-import { SimpleGrid } from "@mantine/core"
-import { useLoaderData } from "react-router-dom";
+import { SimpleGrid, Loader } from "@mantine/core"
+import { useLoaderData, useNavigation } from "react-router-dom";
 
 const ProductsList = (): JSX.Element =>{
     const products = useLoaderData() as T_Product[]; 
+    const {state} = useNavigation();
 
     return( 
-        <SimpleGrid  cols={3}>
-            {products.map((product) => 
-                <Product key={product.id} data={product}/>
-            )} 
-        </SimpleGrid>
+        <>
+            {state === "loading" && <Loader color="blue"/>}
+            {console.log(state)}
+            <SimpleGrid  cols={3}>
+                {products.map((product) => 
+                    <Product key={product.id} data={product}/>
+                )} 
+            </SimpleGrid>
+        </>
     )
 }
 
